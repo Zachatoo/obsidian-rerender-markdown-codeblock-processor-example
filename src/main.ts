@@ -44,5 +44,9 @@ export default class RerenderMarkdownCodeBlockProcessorExamplePlugin extends Plu
 
 	async saveSettings() {
 		await this.saveData(this.settings);
+		// If any settings change should re-render the markdown code block processors, you can trigger this event here instead of in the SettingTab
+		// this.app.workspace.trigger(
+		// 	"rerender-markdown-code-block-processors:rerender"
+		// );
 	}
 }
