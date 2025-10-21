@@ -20,6 +20,12 @@ export class RerenderMarkdownRenderChild extends MarkdownRenderChild {
 				this.display.bind(this)
 			)
 		);
+		// Another way to listen to the event
+		// this.registerDomEvent(
+		// 	document,
+		// 	"re-render-markdown-code-block-processors:rerender",
+		// 	this.display.bind(this)
+		// );
 	}
 
 	display() {

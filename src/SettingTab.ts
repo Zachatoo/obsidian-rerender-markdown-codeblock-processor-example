@@ -27,10 +27,18 @@ export class RerenderMarkdownCodeBlockProcessorExampleSettingTab extends PluginS
 					.onChange(async (value) => {
 						this.plugin.settings.mySetting = value;
 						await this.plugin.saveSettings();
+
 						// Trigger the re-render event
 						// If any setting change should re-render the markdown code block processors, you can trigger this event in the Plugin.saveSettings method instead
-						this.app.workspace.trigger(
-							"rerender-markdown-code-block-processors:rerender"
+						// this.app.workspace.trigger(
+						// 	"rerender-markdown-code-block-processors:rerender"
+						// );
+
+						// Another way to trigger an event
+						document.dispatchEvent(
+							new CustomEvent(
+								"re-render-markdown-code-block-processors:rerender"
+							)
 						);
 					})
 			);
