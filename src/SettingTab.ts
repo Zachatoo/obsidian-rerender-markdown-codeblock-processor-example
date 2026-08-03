@@ -6,10 +6,22 @@ export class RerenderMarkdownCodeBlockProcessorExampleSettingTab extends PluginS
 
 	constructor(
 		app: App,
-		plugin: RerenderMarkdownCodeBlockProcessorExamplePlugin
+		plugin: RerenderMarkdownCodeBlockProcessorExamplePlugin,
 	) {
 		super(app, plugin);
 		this.plugin = plugin;
+	}
+
+	getSettingDefinitions() {
+		return [
+			{
+				name: "mySetting",
+				type: "string",
+				default: "default",
+				description:
+					"A setting that will trigger re-rendering of markdown code block processors when changed.",
+			},
+		];
 	}
 
 	display(): void {
@@ -19,7 +31,7 @@ export class RerenderMarkdownCodeBlockProcessorExampleSettingTab extends PluginS
 		new Setting(containerEl)
 			.setName("Setting")
 			.setDesc(
-				"Updating this setting will re-render markdown code block processors"
+				"Updating this setting will re-render markdown code block processors",
 			)
 			.addText((text) =>
 				text
@@ -37,10 +49,10 @@ export class RerenderMarkdownCodeBlockProcessorExampleSettingTab extends PluginS
 						// Another way to trigger an event
 						document.dispatchEvent(
 							new CustomEvent(
-								"re-render-markdown-code-block-processors:rerender"
-							)
+								"re-render-markdown-code-block-processors:rerender",
+							),
 						);
-					})
+					}),
 			);
 	}
 }
